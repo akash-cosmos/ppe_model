@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH --job-name=ppe_recovery
+#SBATCH --partition=long 
+# Standard output and error log
+#SBATCH --output=/mnt/pfs/akash.mishra/ppe_model/job_files/injection_studies/rescaled_parameters/b_5_beta_07_eps2/ppe_test_%j.log
+#SBATCH --error=/mnt/pfs/akash.mishra/ppe_model/job_files/injection_studies/rescaled_parameters/b_5_beta_07_eps2/ppe_test_%j.err
+#SBATCH --mail-type=END,FAIL          
+#SBATCH --mail-user=akash.mishra@icts.res.in
+#SBATCH --ntasks=1
+#
+#SBATCH --mem=12G    
+##Standard output and error log
+pwd 
+hostname 
+#
+source /home/akash.mishra/miniconda3/bin/activate
+conda activate igwn-py38
+#
+date
+cd /mnt/pfs/akash.mishra/ppe_model/job_files/injection_studies/rescaled_parameters/b_5_beta_07_eps2/
+python ppe_injection_rescaled.py
+date
